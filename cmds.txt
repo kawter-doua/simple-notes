@@ -1,0 +1,44 @@
+i created .ignore file contain these:
+node_modules/
+.env
+*.log
+/********************terminal 1******************/
+git init
+git branch -M main
+npm init -y
+npm install express
+//created index.js that contain this code:
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+const notes = [];
+
+app.get('/notes', (req, res) => {
+  res.json(notes);
+});
+
+app.post('/notes', (req, res) => {
+  const { text } = req.body;
+  if (!text) return res.status(400).json({ error: 'text is required' });
+  const note = { id: notes.length + 1, text };
+  notes.push(note);
+  res.status(201).json(note);
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`SimpleNotes API running on port ${PORT}`));
+//
+then run this cmd in the same terminal:
+node index.js//t9ala3 server
+
+/*******************In 2nd terminal:***************************/
+curl http://localhost:3000/notes
+Invoke-RestMethod -Uri http://localhost:3000/notes -Method POST -ContentType "application/json" -Body '{"text":"my first note"}'
+curl.exe http://localhost:3000/notes
+/***************************other terminal**************************/
+git status
+git add .gitignore index.js package-lock.json package.json
+git status
+git commit -m "creating initial files"
+git log
