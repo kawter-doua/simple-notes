@@ -6,4 +6,4 @@
 4. API available at http://localhost:3000
 ## Endpoints
 - GET /notes
-- POST /notes (body: {"text": "..."})
+- POST /notes (body: {"text": "...", "title": "..."})
