@@ -1,4 +1,4 @@
-# SimpleNotes API
+# SimpleNotes API (with titles)
 ## Run locally
 1. Install Node.js 18+
 2. `npm install`
