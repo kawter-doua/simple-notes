@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-notes-api
+  namespace: default
+  labels:
+    app: simple-notes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-notes
+  template:
+    metadata:
+      labels:
+        app: simple-notes
+    spec:
+      containers:
+      - name: api
+        image: kikarachida/simple-notes-api:latest
+        imagePullPolicy: Allways
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
